@@ -105,13 +105,14 @@ public final class Constants {
         }
 
         // Steer offsets for our modules
+        
         public static final class Offsets {
             // Hurley bot swerve module absolute encoder offsets
             public static final class Hurley {
-                public static final double FRONT_LEFT_STEER_OFFSET = -Math.toRadians(279.242);
-                public static final double FRONT_RIGHT_STEER_OFFSET = -Math.toRadians(358.661);
-                public static final double BACK_LEFT_STEER_OFFSET = -Math.toRadians(357.321);
-                public static final double BACK_RIGHT_STEER_OFFSET = -Math.toRadians(10.045);
+                public static final double FRONT_LEFT_STEER_OFFSET = -180 + 292.3;//279.242);
+                public static final double FRONT_RIGHT_STEER_OFFSET = 201.7;//358.661);
+                public static final double BACK_LEFT_STEER_OFFSET = 180 + 43.6;//357.321);
+                public static final double BACK_RIGHT_STEER_OFFSET = 234.7;//10.045);
             }
 
             // Howitzer swerve module absolute encoder offsets
@@ -162,7 +163,7 @@ public final class Constants {
 
             // Front left CanIDs
             public static final int FRONT_LEFT_DRIVE_MOTOR = 1;
-            public static final int FRONT_LEFT_AZIMUTH_MOTOR = 2;
+            public static final int FRONT_LEFT_AZIMUTH_MOTOR = 2;   
             public static final int FRONT_LEFT_CANCODER = 0;
             // Front right CanIDs
             public static final int FRONT_RIGHT_DRIVE_MOTOR = 3;

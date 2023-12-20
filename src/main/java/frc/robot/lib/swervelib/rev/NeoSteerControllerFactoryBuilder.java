@@ -193,11 +193,11 @@ public final class NeoSteerControllerFactoryBuilder {
                 resetIteration = 0;
             }
 
-            // double currentAngleRadiansMod = currentAngleRadians % (2.0 * Math.PI);
-            // if (currentAngleRadiansMod < 0.0) {
-            //     currentAngleRadiansMod += 2.0 * Math.PI;
-            // }
-            double currentAngleRadiansMod = MathUtil.inputModulus(currentAngleRadians, 0, 2.0 * (Math.PI));
+            double currentAngleRadiansMod = currentAngleRadians % (2.0 * Math.PI);
+            if (currentAngleRadiansMod < 0.0) {
+                currentAngleRadiansMod += 2.0 * Math.PI;
+            }
+            // double currentAngleRadiansMod = MathUtil.inputModulus(currentAngleRadians, 0, 2.0 * (Math.PI));
 
             // The reference angle has the range [0, 2pi) but the Neo's encoder can go above that
 

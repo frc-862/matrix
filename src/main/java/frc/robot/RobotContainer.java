@@ -49,7 +49,7 @@ public class RobotContainer extends LightningContainer {
     @Override
     protected void configureDefaultCommands() {
         drivetrain.setDefaultCommand(new SwerveDrive(drivetrain, () -> MathUtil.applyDeadband(driver.getLeftX(), ControllerConstants.DEADBAND),
-        () -> MathUtil.applyDeadband(driver.getLeftY(), ControllerConstants.DEADBAND), () -> MathUtil.applyDeadband(-driver.getRightX(), ControllerConstants.DEADBAND),
+        () -> MathUtil.applyDeadband(-driver.getLeftY(), ControllerConstants.DEADBAND), () -> MathUtil.applyDeadband(driver.getRightX(), ControllerConstants.DEADBAND),
         () -> driver.getRightTriggerAxis() > 0.25, () -> driver.getLeftTriggerAxis() > 0.25));
 
         elevator.setDefaultCommand(new ManualElevatorControl(elevator, () -> driver.getRightTriggerAxis(), () -> driver.getLeftTriggerAxis()));

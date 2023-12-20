@@ -1,6 +1,11 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix6.configs.MotorOutputConfigs;
+import com.ctre.phoenix6.configs.TalonFXConfigurator;
+import com.ctre.phoenix6.hardware.DeviceIdentifier;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.NeutralModeValue;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.RobotMap.CAN;
 import frc.robot.lib.shuffleboard.LightningShuffleboard;
@@ -13,6 +18,13 @@ public class Elevator extends SubsystemBase {
     public Elevator() {
         elevatorMotor1 = new TalonFX(CAN.ELEVATOR_MOTOR_1);
         elevatorMotor2 = new TalonFX(CAN.ELEVATOR_MOTOR_2);
+
+        MotorOutputConfigs config = new MotorOutputConfigs();
+        config.NeutralMode = NeutralModeValue.Brake;
+        
+        elevatorMotor1.getConfigurator().apply(config);
+        elevatorMotor2.getConfigurator().apply(config);
+
     }
 
     @Override

@@ -22,23 +22,25 @@ public class ThriftyBuilder {
     public AbsoluteEncoderFactory<ThriftyConfig> build() {
         return configuration -> {
             AnalogEncoder encoder = new AnalogEncoder(configuration.getId());
-            encoder.setPositionOffset(configuration.getOffset());
-            encoder.setDistancePerRotation(4096); //TODO: check
+            // encoder.setPositionOffset(configuration.getOffset());
+            encoder.setDistancePerRotation(1); //TODO: check
 
-            return new EncoderImplementation(encoder);
+            return new EncoderImplementation(encoder, configuration.getOffset());
         };
     }
 
     private static class EncoderImplementation implements AbsoluteEncoder {
         private final AnalogEncoder encoder;
+        private final double offset;
 
-        private EncoderImplementation(AnalogEncoder encoder) {
+        private EncoderImplementation(AnalogEncoder encoder, double offset) {
             this.encoder = encoder;
+            this.offset = offset;
         }
 
         @Override
         public double getAbsoluteAngle() {
-            double angle = Math.toRadians(encoder.getAbsolutePosition());
+            double angle = Math.toRadians((encoder.getAbsolutePosition() * 360) - offset);
             angle %= 2.0 * Math.PI;
             if (angle < 0.0) {
                 angle += 2.0 * Math.PI;
